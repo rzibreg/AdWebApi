@@ -40,6 +40,32 @@ namespace AdWebApi
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
+
+                c.AddSecurityDefinition(ApiKeyAuth.APIKEY, new OpenApiSecurityScheme
+                {
+                    Description = "Api key needed to access the endpoints. ApiKey: s0m3Ap1k3yf0rauTh",
+                    In = ParameterLocation.Header,
+                    Name = ApiKeyAuth.APIKEY,
+                    Type = SecuritySchemeType.ApiKey
+                });
+
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Name = ApiKeyAuth.APIKEY,
+                            Type = SecuritySchemeType.ApiKey,
+                            In = ParameterLocation.Header,
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = ApiKeyAuth.APIKEY
+                            }
+                        },
+                        new string[] {}
+                    }
+                });
             });
         }
 

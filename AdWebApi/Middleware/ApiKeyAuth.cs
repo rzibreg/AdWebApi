@@ -11,7 +11,7 @@ namespace AdWebApi.Middleware
     public class ApiKeyAuth
     {
         private readonly RequestDelegate __next;
-        private const string APIKEY = "ApiKey";
+        public const string APIKEY = "ApiKey";
         private string __allowedKey = string.Empty;
 
         public ApiKeyAuth(RequestDelegate next, IServiceProvider serviceProvider)
