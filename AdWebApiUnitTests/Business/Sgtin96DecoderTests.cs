@@ -1,6 +1,9 @@
 using AdWebApi.Business;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using AdWebApi.Entities;
 
 namespace AdWebApiUnitTests.Business
 {
@@ -15,7 +18,7 @@ namespace AdWebApiUnitTests.Business
             var converterResult = Sgtin96Decoder.ConvertFromHex(arrangedHex);
 
             Assert.AreEqual("600851600851", converterResult.CompanyPrefix);
-            Assert.AreEqual("", converterResult.ItemReference);
+            Assert.AreEqual("2", converterResult.ItemReference);
             Assert.AreEqual(0, converterResult.Partition);
         }
 
@@ -27,7 +30,7 @@ namespace AdWebApiUnitTests.Business
             var converterResult = Sgtin96Decoder.ConvertFromHex(arrangedHex);
 
             Assert.AreEqual("30041237743", converterResult.CompanyPrefix);
-            Assert.AreEqual("3", converterResult.ItemReference);
+            Assert.AreEqual("03", converterResult.ItemReference);
             Assert.AreEqual(1, converterResult.Partition);
         }
 
@@ -39,7 +42,7 @@ namespace AdWebApiUnitTests.Business
             var converterResult = Sgtin96Decoder.ConvertFromHex(arrangedHex);
 
             Assert.AreEqual("8457952141", converterResult.CompanyPrefix);
-            Assert.AreEqual("30", converterResult.ItemReference);
+            Assert.AreEqual("430", converterResult.ItemReference);
             Assert.AreEqual(2, converterResult.Partition);
         }
 
@@ -51,7 +54,7 @@ namespace AdWebApiUnitTests.Business
             var converterResult = Sgtin96Decoder.ConvertFromHex(arrangedHex);
 
             Assert.AreEqual("311112347", converterResult.CompanyPrefix);
-            Assert.AreEqual("987", converterResult.ItemReference);
+            Assert.AreEqual("0987", converterResult.ItemReference);
             Assert.AreEqual(3, converterResult.Partition);
         }
 
@@ -63,7 +66,7 @@ namespace AdWebApiUnitTests.Business
             var converterResult = Sgtin96Decoder.ConvertFromHex(arrangedHex);
 
             Assert.AreEqual("51151534", converterResult.CompanyPrefix);
-            Assert.AreEqual("8331", converterResult.ItemReference);
+            Assert.AreEqual("78331", converterResult.ItemReference);
             Assert.AreEqual(4, converterResult.Partition);
         }
 
@@ -75,7 +78,19 @@ namespace AdWebApiUnitTests.Business
             var converterResult = Sgtin96Decoder.ConvertFromHex(arrangedHex);
 
             Assert.AreEqual("9488123", converterResult.CompanyPrefix);
-            Assert.AreEqual("47805", converterResult.ItemReference);
+            Assert.AreEqual("147805", converterResult.ItemReference);
+            Assert.AreEqual(5, converterResult.Partition);
+        }
+
+        [TestMethod]
+        [TestCategory("Sgtin96Decoder")]
+        public void ConvertFromHex_returns_correct_data_for_valid_sgtin96_tag_with_partition_five_test()
+        {
+            var arrangedHex = "3074257bf7194e4000001a85";
+            var converterResult = Sgtin96Decoder.ConvertFromHex(arrangedHex);
+
+            Assert.AreEqual("0614141", converterResult.CompanyPrefix);
+            Assert.AreEqual("812345", converterResult.ItemReference);
             Assert.AreEqual(5, converterResult.Partition);
         }
 
@@ -87,7 +102,7 @@ namespace AdWebApiUnitTests.Business
             var converterResult = Sgtin96Decoder.ConvertFromHex(arrangedHex);
 
             Assert.AreEqual("950316", converterResult.CompanyPrefix);
-            Assert.AreEqual("380884", converterResult.ItemReference);
+            Assert.AreEqual("2380884", converterResult.ItemReference);
             Assert.AreEqual(6, converterResult.Partition);
         }
 

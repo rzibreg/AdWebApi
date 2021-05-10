@@ -18,7 +18,8 @@ namespace AdWebApiUnitTests.Business
         [TestCategory("DataFilter")]
         public void CountByProductAndInventory_returns_expected_value()
         {
-            var actualCount = __dataFilter.CountByProductAndInventory("97011", "STOCK005");
+            //30D4068B5B0A54C00D853004
+            var actualCount = __dataFilter.CountByProductAndInventory("797011", "STOCK005");
 
             Assert.AreEqual(2, actualCount);
         }
@@ -27,7 +28,8 @@ namespace AdWebApiUnitTests.Business
         [TestCategory("DataFilter")]
         public void CountByProductPerDay_returns_expected_value()
         {
-            var actualCount = __dataFilter.CountByProductPerDay("2838", new DateTime(2021, 5, 2));
+            //30727B26B233998003303C79
+            var actualCount = __dataFilter.CountByProductPerDay("52838", new DateTime(2021, 5, 2));
 
             Assert.AreEqual(2, actualCount);
         }
@@ -36,6 +38,7 @@ namespace AdWebApiUnitTests.Business
         [TestCategory("DataFilter")]
         public void CountByCompanyPrefix_returns_expected_value()
         {
+            //3098D0A357783C0034E9DF74
             var actualCount = __dataFilter.CountByCompanyPrefix("213645");
 
             Assert.AreEqual(5, actualCount);
@@ -52,28 +55,28 @@ namespace AdWebApiUnitTests.Business
                 {
                     CompanyPrefix = 213645,
                     CompanyName = "Sanford LLC",
-                    ItemReference = 152432,
+                    ItemReference = 6152432,
                     ItemName = "Beans - Kidney, Red Dry"
                 },
                 new ()
                 {
                     CompanyPrefix = 719065,
                     CompanyName = "Gleichner, Rodriguez and Wilkinson",
-                    ItemReference = 765179,
+                    ItemReference = 9765179,
                     ItemName = "Scallops - In Shell"
                 },
                 new ()
                 {
                     CompanyPrefix = 0107222,
                     CompanyName = "Torphy-Becker",
-                    ItemReference = 97011,
+                    ItemReference = 797011,
                     ItemName = "Wine - Merlot Vina Carmen"
                 },
                 new ()
                 {
                     CompanyPrefix = 83250532,
                     CompanyName = "McGlynn Inc",
-                    ItemReference = 2838,
+                    ItemReference = 52838,
                     ItemName = "Pickles - Gherkins"
                 }
             });

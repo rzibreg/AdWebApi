@@ -112,7 +112,7 @@ namespace AdWebApi.Business
 
             tag.Partition = partition;
             tag.CompanyPrefix = companyPrefixConverted.ToString().PadLeft(partitionDef.CompanyPrefixDigits, '0');
-            tag.ItemReference = itemRefConverted.ToString().PadLeft(partitionDef.ItemRefDigits, '0').Substring(SUBSTRING_ITEM_REFERENCE);
+            tag.ItemReference = itemRefConverted.ToString().PadLeft(partitionDef.ItemRefDigits, '0');
         }
     }
 }
